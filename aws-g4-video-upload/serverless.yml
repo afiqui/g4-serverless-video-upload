@@ -1,0 +1,91 @@
+org: afiqui
+app: aws-g4-video-upload
+service: aws-g4-video-upload
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:GetObject
+        - s3:PutObject
+        - s3:DeleteObject
+        - ses:SendRawEmail
+        - ses:SendEmail
+        - dynamodb:PutItem
+        - dynamodb:GetItem
+      Resource: !Join ["/", [!GetAtt privateUploadBucket.Arn, "*"]]
+
+functions:
+  getS3PresignedUrl:
+    handler: handler.getS3PresignedUrl
+    environment:
+      BUCKET_NAME: !Ref privateUploadBucket
+    events:
+      - http:
+          path: getS3PresignedUrl
+          method: get
+              
+
+  downloadVideo:
+    handler: handler.downloadVideo
+    environment:
+      BUCKET_NAME: !Ref privateUploadBucket
+    events:
+      - http:
+          path: downloadVideo
+          method: get
+
+  executePayload:
+    handler: handler.executePayload
+    events:
+      - s3:
+          bucket: !Ref privateUploadBucket
+          existing: true
+          event: s3:ObjectCreated:*
+
+resources:
+  Resources:
+    privateUploadBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: g4-video-upload-bucket
+        PublicAccessBlockConfiguration:
+          BlockPublicAcls: false
+          BlockPublicPolicy: false
+          IgnorePublicAcls: false
+          RestrictPublicBuckets: false
+        CorsConfiguration:
+          CorsRules:
+            - AllowedHeaders:
+                - '*'
+              AllowedMethods:
+                - GET
+                - PUT
+                - POST
+                - DELETE
+              AllowedOrigins:
+                - '*'
+              ExposedHeaders:
+                - Date
+              Id: myCORSRuleId1
+              MaxAge: 3600
+            - AllowedHeaders:
+                - x-amz-*
+              AllowedMethods:
+                - DELETE
+              AllowedOrigins:
+                - '*'
+                - 'localhost:3000'
+                - 'https://d34mdiwu3w0mg2.cloudfront.net'
+              ExposedHeaders:
+                - Connection
+                - Server
+                - Date
+              Id: myCORSRuleId2
+              MaxAge: 1800
+    

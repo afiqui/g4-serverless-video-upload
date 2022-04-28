@@ -1,0 +1,2 @@
+g4-video-upload-front:
+  component: "./node_modules/@sls-next/serverless-component"
