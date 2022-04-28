@@ -9,6 +9,7 @@ Simples projeto para fazer upload de vídeos para a AWS S3 Bucket e receber um a
 ## DEMO
 
 [Live Preview](https://d34mdiwu3w0mg2.cloudfront.net)
+[Video](https://youtu.be/szc9Adwa5Ao)
 
 
 ## Tecnologias utilizadas
