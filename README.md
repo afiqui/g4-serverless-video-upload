@@ -18,6 +18,7 @@ Simples projeto para fazer upload de vídeos para a AWS S3 Bucket e receber um a
  - [AWS Lambda](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjQ3e-dq7b3AhWlvJUCHZpNBl0QFnoECBIQAQ&url=https%3A%2F%2Faws.amazon.com%2Fpt%2Flambda%2F&usg=AOvVaw0Bs7QEMEEw7igMpLe7lSKW)
  - [AWS SES (Amazon Simple Email Service)](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjqh4W2q7b3AhVcs5UCHYL4CmMQFnoECBoQAQ&url=https%3A%2F%2Faws.amazon.com%2Fpt%2Fses%2F&usg=AOvVaw2yEShKBMolq8HxsX21bVCf)
  - [DynamoDB](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi_sYrPq7b3AhXkr5UCHVUEBngQFnoECBQQAQ&url=https%3A%2F%2Faws.amazon.com%2Fpt%2Fdynamodb%2F&usg=AOvVaw1yiNKBL48x-K5gP2MkyfzT)
+ - [Next.js](https://nextjs.org)
 
 
 ## Autores
